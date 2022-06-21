@@ -51,7 +51,7 @@ function App() {
         { entrances.length > 0 && entrances[3].status ? (
           <h1>D</h1>
         ) : (
-          <button onClick={() => dispatch(addEntrance())}>Add Entrance</button>
+          <button onClick={() => dispatch(addEntrance(entrances[3]))}>Add Entrance</button>
         )}
         </div>
       

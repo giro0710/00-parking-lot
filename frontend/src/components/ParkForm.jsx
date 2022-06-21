@@ -7,7 +7,7 @@ function ParkForm() {
   const [data, setData] = useState({
     plateNumber: "",
     vehicleSize: "0",
-    entrance: "0"
+    entranceIndex: "0"
   })
 
   const dispatch = useDispatch()
@@ -50,11 +50,11 @@ function ParkForm() {
           <option value="1">Medium</option>
           <option value="2">Large</option>
         </select>
-        <select name="entrance" onChange={handleFieldChange}>
+        <select name="entranceIndex" onChange={handleFieldChange}>
           {
-            entrances.map((entrance) => {
+            entrances.map((entrance, index) => {
               if (entrance.status) {
-                return <option key={entrance._id} value={entrance._id}>{entrance.name}</option>
+                return <option key={entrance._id} value={index}>{entrance.name}</option>
               }
             })
           }

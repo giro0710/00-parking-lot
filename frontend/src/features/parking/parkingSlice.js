@@ -38,9 +38,9 @@ export const unparkVehicle = createAsyncThunk("parking/unpark", async (data, thu
   }
 })
 
-export const addEntrance = createAsyncThunk("parking/entrance", async (_, thunkAPI) => {
+export const addEntrance = createAsyncThunk("parking/entrance", async (data, thunkAPI) => {
   try {
-    return await parkingService.addEntrance()
+    return await parkingService.addEntrance(data)
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString() 
     return thunkAPI.rejectWithValue(message)
@@ -115,6 +115,7 @@ export const parkingSlice = createSlice({
       .addCase(addEntrance.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
+        console.log(action.payload)
         const index = state.entrances.findIndex((e) => e._id === action.payload._id)
         state.entrances[index] = action.payload
       })

@@ -20,8 +20,8 @@ const unparkVehicle = async (data) => {
   return response.data
 }
 
-const addEntrance = async () => {
-  const response = await axios.post(API_URL + "entrances")
+const addEntrance = async (data) => {
+  const response = await axios.put(API_URL + "entrances", data)
 
   return response.data
 }
