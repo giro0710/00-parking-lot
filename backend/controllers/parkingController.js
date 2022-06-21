@@ -73,7 +73,9 @@ const unpark = asyncHandler(async (req, res) => {
         throw new Error("No vehicle parked in the given parking slot.")
       }
 
-      let hoursDue = timeDiff(new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" }), new Date(parkingSlots[i].occupier.start))
+      const currentDate = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" })
+
+      let hoursDue = timeDiff(new Date(currentDate), new Date(parkingSlots[i].occupier.start))
 
       if (hoursDue <= 3) {
         totalDue = flatRate
